@@ -1,10 +1,9 @@
 import React from "react";
-import { Button } from "../../componentes/Button";
-import { Screen } from "../../componentes/Screen";
-import * as S from "./styles";
+import { Button, Screen } from "@/presentation/components";
 import { PersonInfo } from "./components/PersonInfo";
 import { Contact } from "./components/Contact";
 import { Address } from "./components/Address";
+import * as S from "./styles";
 
 export function SalesProposal({ navigation }) {
   const [step, setStep] = React.useState(0);
@@ -28,7 +27,7 @@ export function SalesProposal({ navigation }) {
       {step === 1 && <Contact />}
       {step === 2 && <Address />}
       <S.ButtonsWrapper>
-        <Button title="Voltar" onPress={handleBack} />
+        <Button title="Voltar" onPress={handleBack} variant="secondary" />
         <Button title="Próximo" onPress={handleNext} />
       </S.ButtonsWrapper>
     </Screen>

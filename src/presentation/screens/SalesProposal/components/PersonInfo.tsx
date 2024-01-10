@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./styles";
-import { Input } from "../../../componentes/Input";
+import { Input } from "@/presentation/components";
 
 export function PersonInfo() {
   return (

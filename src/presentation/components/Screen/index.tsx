@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./styles";
-import { useAppSafeArea } from "../../hooks/useAppSafeArea";
+import { useAppSafeArea } from "@/presentation/hooks";
 
 type ScreenProps = {
   children: React.ReactNode;

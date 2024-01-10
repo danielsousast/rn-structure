@@ -15,8 +15,8 @@ export const Wrapper = styled.View<WrapperProps>`
   min-height: 50px;
   border-radius: 5px;
   padding-left: 4px;
-  border: 1px solid #ccc;
-  background-color: #eee;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  background-color: ${({ theme }) => theme.colors.shape};
   margin-top: ${(props) => props.mt}px;
   margin-bottom: ${(props) => props.mb}px;
   width: ${(props) => (props.half ? HALF_WIDTH : undefined)}px;

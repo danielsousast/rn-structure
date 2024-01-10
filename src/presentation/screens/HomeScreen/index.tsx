@@ -1,11 +1,11 @@
 import React from "react";
-import { FlatList, ListRenderItemInfo, Text, View } from "react-native";
-import * as S from "./styles";
-import { Screen } from "../../componentes/Screen";
-import { Button } from "../../componentes/Button";
+import { FlatList, ListRenderItemInfo } from "react-native";
+import { Screen, Button, SearchInput } from "@/presentation/components";
 import { PropoalItem } from "./components/PropoalItem";
-import { Proposal } from "../../../features/proposals/interfaces";
-import { SearchInput } from "../../componentes/SearchInput";
+import { Proposal } from "@/features/proposals/interfaces";
+import { Routes } from "@/app/navigation/Routes";
+import * as S from "./styles";
+import { FilterButton } from "@/presentation/components/FilterButton";
 
 const proposals: Proposal[] = [
   {
@@ -60,17 +60,27 @@ const proposals: Proposal[] = [
 
 export function HomeScreen({ navigation }) {
   function handleNewProposal() {
-    navigation.navigate("SalesProposal");
+    navigation.navigate(Routes.SalesProposal);
   }
 
-  function renderItem({ item }: ListRenderItemInfo<Proposal>) {
-    return <PropoalItem proposal={item} onPress={() => {}} />;
+  function renderItem({ item, index }: ListRenderItemInfo<Proposal>) {
+    return (
+      <PropoalItem
+        proposal={item}
+        onPress={() => {}}
+        withBorder={index !== proposals.length - 1}
+      />
+    );
   }
 
   return (
     <Screen>
       <S.Content>
-        <SearchInput />
+        <S.SearContainer>
+          <SearchInput />
+          <FilterButton />
+        </S.SearContainer>
+
         <FlatList
           showsVerticalScrollIndicator={false}
           data={proposals}
@@ -78,7 +88,7 @@ export function HomeScreen({ navigation }) {
         />
       </S.Content>
       <Button title="Nova proposta" onPress={handleNewProposal} />
-      <Button title="Relatório" onPress={() => {}} />
+      <Button variant="secondary" title="Relatório" onPress={() => {}} />
     </Screen>
   );
 }

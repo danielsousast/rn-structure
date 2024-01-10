@@ -1,4 +1,10 @@
 {
-  "compilerOptions": {},
-  "extends": "expo/tsconfig.base"
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "baseUrl": "src" /* Base directory to resolve non-absolute module names. */,
+    "paths": {
+      "@/*": ["*"]
+    }
+  }
 }

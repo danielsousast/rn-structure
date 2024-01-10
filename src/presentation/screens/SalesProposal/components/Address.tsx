@@ -1,6 +1,5 @@
 import React from "react";
-import { View } from "react-native";
-import { Input } from "../../../componentes/Input";
+import { Input } from "@/presentation/components";
 
 import * as S from "./styles";
 

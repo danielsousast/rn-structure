@@ -5,18 +5,17 @@ export const Wrapper = styled.View`
   height: 50px;
   border-radius: 5px;
   padding-left: 4px;
-  border: 1px solid #ccc;
-  background-color: #eee;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  background-color: ${({ theme }) => theme.colors.shape};
+  flex: 1;
 `;
 
 export const Input = styled.TextInput`
   flex: 1;
   font-size: 16px;
-  padding-left: 10px;
+  padding-right: 16px;
 `;
 
 export const IconWrapper = styled.View`
   padding: 0 10px;
-  border-right-width: 1px;
-  border-right-color: #ccc;
 `;

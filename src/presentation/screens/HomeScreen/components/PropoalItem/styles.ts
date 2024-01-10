@@ -1,20 +1,29 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 
-export const ItemContainer = styled.TouchableOpacity`
+interface ItemContainerProps {
+  withBorder?: boolean;
+}
+
+export const ItemContainer = styled.TouchableOpacity<ItemContainerProps>`
   ${(props) => props.theme.styles.row}
-  background-color: #fff;
   padding: 10px;
+  padding-bottom: 16px;
   border-radius: 5px;
   margin: 5px;
-  border-bottom-width: 1px;
-  border-bottom-color: #ccc;
+  ${({ withBorder }) =>
+    withBorder &&
+    css`
+      border-bottom-width: 0.7px;
+      border-bottom-color: ${(props) => props.theme.colors.border};
+    `}
 `;
 
 export const IconWrapper = styled.View`
-  padding: 16px;
-  border-radius: 6px;
-  background-color: #ccc;
+  padding: 2px;
+  border-radius: 20px;
+  background-color: ${(props) => props.theme.colors.success};
   ${(props) => props.theme.styles.center}
+  opacity: 0.7;
 `;
 
 export const ItemContent = styled.View`
