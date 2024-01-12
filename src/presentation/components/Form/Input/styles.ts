@@ -36,7 +36,7 @@ export const TextInput = styled.TextInput`
 
 export const Label = styled.Text`
   font-size: 12px;
-  color: #000;
+  color: ${({ theme }) => theme.colors.text};
   margin-bottom: 5px;
 `;
 

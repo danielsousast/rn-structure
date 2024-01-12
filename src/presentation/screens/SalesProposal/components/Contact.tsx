@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./styles";
-import { FormInput } from "@/presentation/Form/FormInput";
+import { FormInput } from "@/presentation/components/Form/FormInput";
 import { useForm } from "react-hook-form";
 import { Button } from "@/presentation/components";
 import { zodResolver } from "@hookform/resolvers/zod";

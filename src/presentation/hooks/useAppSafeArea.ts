@@ -4,7 +4,7 @@ export function useAppSafeArea() {
   const { top, bottom } = useSafeAreaInsets();
 
   return {
-    top: Math.max(top, 20),
-    bottom: Math.max(bottom, 20),
+    top: Math.max(top, 40),
+    bottom: Math.max(bottom, 40),
   };
 }

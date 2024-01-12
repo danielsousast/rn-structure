@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from "@expo/vector-icons/FontAwesome";
-import * as S from "./styles";
 import { useTheme } from "styled-components/native";
+import * as S from "./styles";
 
 export function FilterButton() {
   const { colors } = useTheme();

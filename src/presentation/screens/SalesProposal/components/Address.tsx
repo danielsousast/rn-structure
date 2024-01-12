@@ -2,12 +2,12 @@ import React from "react";
 import { Button } from "@/presentation/components";
 
 import * as S from "./styles";
-import { FormInput } from "@/presentation/Form/FormInput";
+import { FormInput } from "@/presentation/components/Form/FormInput";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { addressSchema } from "../schema";
 import { formatZipCode } from "@/common/utils/mask";
-import { SelectInput } from "@/presentation/Form/SelectInput";
+import { SelectInput } from "@/presentation/components/Form/SelectInput";
 import { useUfs } from "@/features/locals/hooks/useUfs";
 import { useCities } from "@/features/locals/hooks/useCities";
 

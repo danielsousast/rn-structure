@@ -5,6 +5,7 @@ import { PieChart } from "react-native-chart-kit";
 import { chartConfig, groupByCityAndCount } from "./helper";
 import { Button, Screen } from "@/presentation/components";
 import * as S from "./styles";
+import { EmtpyFeedback } from "../../components/EmtpyFeedback";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const CHART_WIDTH = SCREEN_WIDTH - 62;
@@ -20,6 +21,7 @@ export function ReportScreen({ navigation }) {
     <Screen>
       <S.Content>
         <S.Title>Propostas por cidade</S.Title>
+        {reportyData?.length === 0 && <EmtpyFeedback />}
         <PieChart
           data={reportyData}
           width={SCREEN_WIDTH}

@@ -1,12 +1,12 @@
 import React from "react";
 import * as S from "./styles";
 import { Button, Input } from "@/presentation/components";
-import { FormInput } from "@/presentation/Form/FormInput";
+import { FormInput } from "@/presentation/components/Form/FormInput";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { personInfoSchema } from "../schema";
 import { formatCpf, formatDate } from "@/common/utils/mask";
-import { SelectInput } from "@/presentation/Form/SelectInput";
+import { SelectInput } from "@/presentation/components/Form/SelectInput";
 
 const options = [
   {

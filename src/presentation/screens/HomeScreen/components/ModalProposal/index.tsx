@@ -1,9 +1,9 @@
 import React from "react";
 import ReactNativeModal from "react-native-modal";
-import * as S from "./styles";
-import { Proposal } from "@/features/proposals/interfaces";
-import { LinkButton } from "@/presentation/components/LinkButton";
+import { Proposal } from "@/features/proposals";
+import { LinkButton } from "@/presentation/components";
 import { useRemove } from "@/features/proposals";
+import * as S from "./styles";
 
 interface Props {
   visible: boolean;

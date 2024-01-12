@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from "@expo/vector-icons/Feather";
-import * as S from "./styles";
 import { useTheme } from "styled-components/native";
+import * as S from "./styles";
 
 interface Props {
   onPress: () => void;

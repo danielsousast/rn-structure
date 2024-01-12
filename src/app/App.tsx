@@ -1,14 +1,14 @@
 import "@/config/reactotron";
 
-import { StatusBar } from "expo-status-bar";
 import React from "react";
+import { StatusBar } from "expo-status-bar";
 import { Navigator } from "./navigation/StackNavigator";
 import { ThemeProvider } from "styled-components/native";
-import { themeDark } from "../common/styles/themeDark";
+import { theme } from "@/common/styles/theme";
 
 export default function App() {
   return (
-    <ThemeProvider theme={themeDark}>
+    <ThemeProvider theme={theme}>
       <StatusBar style="auto" />
       <Navigator />
     </ThemeProvider>

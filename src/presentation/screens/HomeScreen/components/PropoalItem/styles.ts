@@ -32,12 +32,12 @@ export const ItemContent = styled.View`
 `;
 
 export const ItemText = styled.Text`
-  color: #000;
+  color: ${({ theme }) => theme.colors.text};
   font-weight: bold;
   font-size: 16px;
 `;
 
 export const ItemLabel = styled.Text`
-  color: #000;
+  color: ${({ theme }) => theme.colors.text};
   font-size: 14px;
 `;

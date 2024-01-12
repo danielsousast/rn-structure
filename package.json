@@ -39,7 +39,11 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "babel-plugin-root-import": "^6.6.0",
+    "eslint": "^8.56.0",
     "reactotron-react-native": "^5.0.4"
   },
-  "private": true
+  "private": true,
+  "repository": "git@github.com:danielsousast/unymos.git",
+  "author": "danielsousast <daniel.sousa.developer@gmail.com>",
+  "license": "MIT"
 }

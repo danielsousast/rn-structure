@@ -16,7 +16,7 @@ export const ButtonContainer = styled.TouchableOpacity<ButtonContainerProps>`
 `;
 
 export const ButtonText = styled.Text`
-  color: #fff;
+  color: ${({ theme }) => theme.colors.white};
   font-weight: bold;
   font-size: 16px;
 `;

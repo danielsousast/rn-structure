@@ -14,6 +14,7 @@ export const Dropdown = styled(DropdownSelect).attrs(({ theme }) => ({
     borderColor: theme.colors.border,
     borderWidth: 1,
     width: "100%",
+    backgroundColor: theme.colors.shape,
   },
   dropdownIconStyle: {
     marginTop: -5,
@@ -21,6 +22,7 @@ export const Dropdown = styled(DropdownSelect).attrs(({ theme }) => ({
   searchInputStyle: {
     height: 50,
     borderColor: theme.colors.border,
+    backgroundColor: theme.colors.shape,
   },
   dropdownErrorStyle: {
     marginBottom: 0,
@@ -33,6 +35,6 @@ export const Dropdown = styled(DropdownSelect).attrs(({ theme }) => ({
 
 export const Label = styled.Text`
   font-size: 12px;
-  color: #000;
+  color: ${({ theme }) => theme.colors.text};
   margin-bottom: 5px;
 `;

@@ -1,13 +1,16 @@
 import React, { useMemo, useState } from "react";
 import { FlatList, ListRenderItemInfo, RefreshControl } from "react-native";
-import { Screen, Button, SearchInput } from "@/presentation/components";
-import { PropoalItem } from "./components/PropoalItem";
+import {
+  Screen,
+  Button,
+  SearchInput,
+  EmtpyFeedback,
+} from "@/presentation/components";
+import { PropoalItem, ModalProposal } from "./components";
 import { Proposal } from "@/features/proposals/interfaces";
 import { Routes } from "@/app/navigation/Routes";
-import * as S from "./styles";
-import { FilterButton } from "@/presentation/components/FilterButton";
 import { useList } from "@/features/proposals/hooks/useList";
-import { ModalProposal } from "./components/ModalProposal";
+import * as S from "./styles";
 
 export function HomeScreen({ navigation }) {
   const { proposals, fetchProposals } = useList();
@@ -53,7 +56,6 @@ export function HomeScreen({ navigation }) {
       <S.Content>
         <S.SearContainer>
           <SearchInput value={search} onChangeText={setSearch} />
-          <FilterButton />
         </S.SearContainer>
 
         <FlatList
@@ -63,6 +65,7 @@ export function HomeScreen({ navigation }) {
           refreshControl={
             <RefreshControl refreshing={false} onRefresh={fetchProposals} />
           }
+          ListEmptyComponent={() => <EmtpyFeedback />}
         />
       </S.Content>
       <Button title="Nova proposta" onPress={handleNewProposal} />
