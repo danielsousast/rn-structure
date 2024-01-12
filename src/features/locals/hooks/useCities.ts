@@ -1,23 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { localServices } from "../service";
-import { City } from "../interfaces";
+import { City, Item } from "../interfaces";
 
-export function useCities() {
-  const [cities, setCities] = useState<City[]>([]);
+export function useCities(uf: string) {
+  const [cities, setCities] = useState<Item[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  async function getCities(uf: string) {
+  async function getCities() {
     try {
       setLoading(true);
-      const { data } = await localServices.getCitities(uf);
-      setCities(data);
+      const response = await localServices.getCitities(uf);
+      setCities(response);
     } catch (error) {
       setError(true);
     } finally {
       setLoading(false);
     }
   }
+
+  useEffect(() => {
+    if (uf) {
+      getCities();
+    }
+  }, [uf]);
 
   return { cities, loading, error, getCities };
 }

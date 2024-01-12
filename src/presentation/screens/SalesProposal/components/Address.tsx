@@ -1,12 +1,15 @@
 import React from "react";
-import { Button, Input } from "@/presentation/components";
+import { Button } from "@/presentation/components";
 
 import * as S from "./styles";
-import { FormInput } from "@/presentation/components/FormInput";
+import { FormInput } from "@/presentation/Form/FormInput";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { addressSchema } from "../schema";
 import { formatZipCode } from "@/common/utils/mask";
+import { SelectInput } from "@/presentation/Form/SelectInput";
+import { useUfs } from "@/features/locals/hooks/useUfs";
+import { useCities } from "@/features/locals/hooks/useCities";
 
 interface Props {
   submitAddress: (data: any) => void;
@@ -14,6 +17,9 @@ interface Props {
 }
 
 export function Address({ submitAddress, handleBack }: Props) {
+  const [uf, setUf] = React.useState("");
+  const { ufs } = useUfs();
+  const { cities } = useCities(uf);
   const { control, handleSubmit } = useForm<FormData>({
     resolver: zodResolver(addressSchema),
   });
@@ -26,23 +32,19 @@ export function Address({ submitAddress, handleBack }: Props) {
       <S.ScreenTitle>Endereço</S.ScreenTitle>
 
       <S.InputWrapper>
-        <FormInput
+        <SelectInput
+          options={ufs as any}
           name="addressState"
           control={control}
           label="Estado"
-          keyboardType="numeric"
-          maxLength={11}
-          mb={12}
+          onValueChange={(value) => setUf(value)}
           half
         />
-        <FormInput
-          control={control}
+        <SelectInput
+          options={cities as any}
           name="addressCity"
-          placeholder="Cidade"
+          control={control}
           label="Cidade"
-          keyboardType="numeric"
-          maxLength={11}
-          mb={12}
           half
         />
       </S.InputWrapper>

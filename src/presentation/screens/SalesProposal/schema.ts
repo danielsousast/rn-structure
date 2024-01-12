@@ -16,10 +16,12 @@ export const contactSchema = zod.object({
 
 export const addressSchema = zod.object({
   address: zod.string({ required_error: "Endereço é obrigatório" }),
-  addressNumber: zod.string(),
-  addressComplement: zod.string(),
-  addressNeighborhood: zod.string(),
-  addressCity: zod.string(),
-  addressState: zod.string(),
-  addressZipCode: zod.string(),
+  addressNumber: zod.string({ required_error: "Número é obrigatório" }),
+  addressComplement: zod.string({
+    required_error: "Complemento é obrigatório",
+  }),
+  addressNeighborhood: zod.string({ required_error: "Bairro é obrigatório" }),
+  addressCity: zod.string({ required_error: "Cidade é obrigatório" }),
+  addressState: zod.string({ required_error: "Estado é obrigatório" }),
+  addressZipCode: zod.string({ required_error: "CEP é obrigatório" }),
 });

@@ -1,23 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { localServices } from "../service";
-import { City } from "../interfaces";
+import { Item } from "../interfaces";
 
 export function useUfs() {
-  const [ufs, setUfs] = useState<City[]>([]);
+  const [ufs, setUfs] = useState<Item[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   async function getUfs() {
     try {
       setLoading(true);
-      const { data } = await localServices.getUFs();
-      setUfs(data);
+      const response = await localServices.getUFs();
+
+      setUfs(response);
     } catch (error) {
       setError(true);
     } finally {
       setLoading(false);
     }
   }
+
+  useEffect(() => {
+    getUfs();
+  }, []);
 
   return { ufs, loading, error, getUfs };
 }

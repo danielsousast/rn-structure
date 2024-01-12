@@ -1,11 +1,35 @@
 import React from "react";
 import * as S from "./styles";
 import { Button, Input } from "@/presentation/components";
-import { FormInput } from "@/presentation/components/FormInput";
+import { FormInput } from "@/presentation/Form/FormInput";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { personInfoSchema } from "../schema";
 import { formatCpf, formatDate } from "@/common/utils/mask";
+import { SelectInput } from "@/presentation/Form/SelectInput";
+
+const options = [
+  {
+    label: "Solteiro(a)",
+    value: "single",
+  },
+  {
+    label: "Casado(a)",
+    value: "married",
+  },
+  {
+    label: "Divorciado(a)",
+    value: "divorced",
+  },
+  {
+    label: "Viúvo(a)",
+    value: "widower",
+  },
+  {
+    label: "Separado(a)",
+    value: "separated",
+  },
+];
 
 interface Props {
   handleBack: () => void;
@@ -60,11 +84,12 @@ export function PersonInfo({
         formatText={formatDate}
         mb={12}
       />
-      <FormInput
+
+      <SelectInput
+        options={options}
         control={control}
         name="maritalStatus"
         label="Estado civil"
-        mt={8}
       />
       <S.ButtonsWrapper>
         <Button title="Voltar" onPress={handleBack} variant="secondary" />

@@ -31,3 +31,8 @@ export interface City {
     };
   };
 }
+
+export interface Item {
+  label: string;
+  value: string;
+}

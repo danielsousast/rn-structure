@@ -6,3 +6,7 @@ export const Title = styled.Text`
   margin-bottom: 10px;
   align-self: center;
 `;
+
+export const Content = styled.View`
+  flex: 1;
+`;
