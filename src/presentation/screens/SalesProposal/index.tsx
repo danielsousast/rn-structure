@@ -1,12 +1,42 @@
 import React from "react";
-import { Button, Screen } from "@/presentation/components";
+import { Screen } from "@/presentation/components";
 import { PersonInfo } from "./components/PersonInfo";
 import { Contact } from "./components/Contact";
 import { Address } from "./components/Address";
-import * as S from "./styles";
+import { useAddProposal } from "@/features/proposals";
+import { Routes } from "@/app/navigation/Routes";
+
+interface FormData {
+  name: string;
+  cpf: string;
+  rg: string;
+  phone: string;
+  cellphone: string;
+  email: string;
+  address: string;
+  addressNumber: string;
+  addressComplement: string;
+  addressNeighborhood: string;
+  addressCity: string;
+  addressState: string;
+  addressZipCode: string;
+  maritalStatus: string;
+  birthDate: string;
+}
 
 export function SalesProposal({ navigation }) {
+  const { addProposal } = useAddProposal({
+    onSucess: () => {
+      navigation.reset({
+        index: 0,
+        routes: [{ name: Routes.Home }],
+      });
+    },
+  });
+  const [personInfo, setPersonInfo] = React.useState<FormData>(null);
+  const [contact, setContact] = React.useState<FormData>(null);
   const [step, setStep] = React.useState(0);
+
   function handleBack() {
     if (step === 0) {
       navigation.goBack();
@@ -21,15 +51,38 @@ export function SalesProposal({ navigation }) {
     setStep((prev) => prev + 1);
   }
 
+  function onSubmit(adressData: any) {
+    const data = {
+      ...personInfo,
+      ...contact,
+      ...adressData,
+    };
+    addProposal(data as any);
+    navigation.reset({
+      index: 0,
+      routes: [{ name: Routes.Home }],
+    });
+  }
+
   return (
-    <Screen>
-      {step === 0 && <PersonInfo />}
-      {step === 1 && <Contact />}
-      {step === 2 && <Address />}
-      <S.ButtonsWrapper>
-        <Button title="Voltar" onPress={handleBack} variant="secondary" />
-        <Button title="Próximo" onPress={handleNext} />
-      </S.ButtonsWrapper>
+    <Screen scrollable>
+      {step === 0 && (
+        <PersonInfo
+          handleBack={handleBack}
+          submitPersonInfo={setPersonInfo}
+          handleNext={handleNext}
+        />
+      )}
+      {step === 1 && (
+        <Contact
+          submitPersonInfo={setContact}
+          handleBack={handleBack}
+          handleNext={handleNext}
+        />
+      )}
+      {step === 2 && (
+        <Address submitAddress={onSubmit} handleBack={handleBack} />
+      )}
     </Screen>
   );
 }

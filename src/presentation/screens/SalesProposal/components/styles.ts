@@ -12,3 +12,9 @@ export const ScreenTitle = styled.Text`
   font-weight: bold;
   margin-bottom: 20px;
 `;
+
+export const ButtonsWrapper = styled.View`
+  ${(props) => props.theme.styles.row}
+  width: 100%;
+  margin-top: 20px;
+`;

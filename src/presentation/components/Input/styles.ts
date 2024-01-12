@@ -5,10 +5,18 @@ const SCREEN_WIDTH = Dimensions.get("window").width;
 const HALF_WIDTH = SCREEN_WIDTH / 2 - 34;
 
 interface WrapperProps {
-  mt: number;
-  mb: number;
   half?: boolean;
 }
+
+interface ContainerProps {
+  mt: number;
+  mb: number;
+}
+
+export const Container = styled.View<ContainerProps>`
+  margin-top: ${(props) => props.mt}px;
+  margin-bottom: ${(props) => props.mb}px;
+`;
 
 export const Wrapper = styled.View<WrapperProps>`
   ${(props) => props.theme.styles.row}
@@ -17,8 +25,6 @@ export const Wrapper = styled.View<WrapperProps>`
   padding-left: 4px;
   border: 1px solid ${({ theme }) => theme.colors.border};
   background-color: ${({ theme }) => theme.colors.shape};
-  margin-top: ${(props) => props.mt}px;
-  margin-bottom: ${(props) => props.mb}px;
   width: ${(props) => (props.half ? HALF_WIDTH : undefined)}px;
 `;
 
@@ -32,4 +38,11 @@ export const Label = styled.Text`
   font-size: 12px;
   color: #000;
   margin-bottom: 5px;
+`;
+
+export const ErrorText = styled.Text`
+  color: ${({ theme }) => theme.colors.danger};
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 14px;
 `;

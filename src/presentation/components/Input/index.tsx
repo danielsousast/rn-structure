@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import * as S from "./styles";
 import { TextInputProps, View } from "react-native";
 
@@ -11,15 +11,39 @@ interface InputProps extends TextInputProps {
   mb?: number;
   label?: string;
   half?: boolean;
+  error?: string;
+  formatText?: (text: string) => string;
 }
 
-export function Input({ mt, mb, label, half, ...inputProps }: InputProps) {
+export function Input({
+  mt,
+  mb,
+  label,
+  half,
+  error,
+  formatText,
+  onChangeText,
+  ...inputProps
+}: InputProps) {
+  const handleChangeText = useCallback(
+    (value: string) => {
+      let text = value;
+      if (formatText) {
+        text = formatText(text);
+      }
+
+      onChangeText && onChangeText(text);
+    },
+    [formatText, onChangeText]
+  );
+
   return (
-    <View>
+    <S.Container mt={mt} mb={mb}>
       {label && <S.Label>{label}</S.Label>}
-      <S.Wrapper mt={mt} mb={mb} half={half}>
-        <S.TextInput {...inputProps} />
+      <S.Wrapper half={half}>
+        <S.TextInput {...inputProps} onChangeText={handleChangeText} />
       </S.Wrapper>
-    </View>
+      {error && <S.ErrorText>{error}</S.ErrorText>}
+    </S.Container>
   );
 }

@@ -4,17 +4,20 @@ import { useAppSafeArea } from "@/presentation/hooks";
 
 type ScreenProps = {
   children: React.ReactNode;
+  scrollable?: boolean;
 };
 
-export function Screen({ children }: ScreenProps) {
+export function Screen({ children, scrollable = false }: ScreenProps) {
   const { top } = useAppSafeArea();
+
+  const Container = scrollable ? S.ScrollView : S.Container;
   return (
-    <S.Container
+    <Container
       style={{
-        paddingTop: top,
+        paddingTop: top + 10,
       }}
     >
       {children}
-    </S.Container>
+    </Container>
   );
 }
