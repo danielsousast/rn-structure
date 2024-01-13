@@ -5,6 +5,7 @@ import { Contact } from "./components/Contact";
 import { Address } from "./components/Address";
 import { useAddProposal } from "@/features/proposals";
 import { Routes } from "@/app/navigation/Routes";
+import { useToastAction } from "@/presentation/components/Toast/hook/useToast";
 
 interface FormData {
   name: string;
@@ -25,11 +26,22 @@ interface FormData {
 }
 
 export function SalesProposal({ navigation }) {
+  const { showToast } = useToastAction();
   const { addProposal } = useAddProposal({
     onSucess: () => {
+      showToast({
+        message: "Proposta cadastrada com sucesso!",
+        type: "success",
+      });
       navigation.reset({
         index: 0,
         routes: [{ name: Routes.Home }],
+      });
+    },
+    onError: () => {
+      showToast({
+        message: "Erro ao cadastrar proposta!",
+        type: "error",
       });
     },
   });

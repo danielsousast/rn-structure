@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { localServices } from "../service";
 import { Item } from "../interfaces";
+import { HookOptions } from "@/features/shared/types";
 
-export function useUfs() {
+export function useUfs(options?: HookOptions) {
   const [ufs, setUfs] = useState<Item[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
 
   async function getUfs() {
     try {
@@ -14,7 +14,7 @@ export function useUfs() {
 
       setUfs(response);
     } catch (error) {
-      setError(true);
+      options?.onError?.(error);
     } finally {
       setLoading(false);
     }
@@ -24,5 +24,5 @@ export function useUfs() {
     getUfs();
   }, []);
 
-  return { ufs, loading, error, getUfs };
+  return { ufs, loading, getUfs };
 }

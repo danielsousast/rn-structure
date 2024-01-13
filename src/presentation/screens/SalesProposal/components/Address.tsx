@@ -10,6 +10,7 @@ import { formatZipCode } from "@/common/utils/mask";
 import { SelectInput } from "@/presentation/components/Form/SelectInput";
 import { useUfs } from "@/features/locals/hooks/useUfs";
 import { useCities } from "@/features/locals/hooks/useCities";
+import { useToastAction } from "@/presentation/components/Toast/hook/useToast";
 
 interface Props {
   submitAddress: (data: any) => void;
@@ -17,9 +18,24 @@ interface Props {
 }
 
 export function Address({ submitAddress, handleBack }: Props) {
+  const { showToast } = useToastAction();
   const [uf, setUf] = React.useState("");
-  const { ufs } = useUfs();
-  const { cities } = useCities(uf);
+  const { ufs } = useUfs({
+    onError: () => {
+      showToast({
+        message: "Erro ao buscar estados!",
+        type: "error",
+      });
+    },
+  });
+  const { cities } = useCities(uf, {
+    onError: () => {
+      showToast({
+        message: "Erro ao buscar cidades!",
+        type: "error",
+      });
+    },
+  });
   const { control, handleSubmit } = useForm<FormData>({
     resolver: zodResolver(addressSchema),
   });
@@ -30,7 +46,6 @@ export function Address({ submitAddress, handleBack }: Props) {
   return (
     <S.Container>
       <S.ScreenTitle>Endereço</S.ScreenTitle>
-
       <S.InputWrapper>
         <SelectInput
           options={ufs as any}

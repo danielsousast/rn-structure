@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { localServices } from "../service";
 import { City, Item } from "../interfaces";
+import { HookOptions } from "@/features/shared/types";
 
-export function useCities(uf: string) {
+export function useCities(uf: string, options?: HookOptions) {
   const [cities, setCities] = useState<Item[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
 
   async function getCities() {
     try {
@@ -13,7 +13,7 @@ export function useCities(uf: string) {
       const response = await localServices.getCitities(uf);
       setCities(response);
     } catch (error) {
-      setError(true);
+      options?.onError?.(error);
     } finally {
       setLoading(false);
     }
@@ -25,5 +25,5 @@ export function useCities(uf: string) {
     }
   }, [uf]);
 
-  return { cities, loading, error, getCities };
+  return { cities, loading, getCities };
 }

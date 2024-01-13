@@ -7,7 +7,7 @@ export function useAddProposal(options?: HookOptions) {
 
   async function addProposal(data: Proposal) {
     try {
-      const response = proposalService.addProposal(data);
+      proposalService.addProposal(data);
       options?.onSucess?.();
     } catch (error) {
       options?.onError?.(error);
