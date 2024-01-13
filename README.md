@@ -2,7 +2,7 @@
 
 <br />
 <div align="center">
-    <img src=".github/logo.png" alt="Logo" width="80" height="80">
+    <img src="assets/icon.png" alt="Logo" width="80" height="80">
 
   <h3 align="center">Unymos App</h3>
 
@@ -66,7 +66,7 @@ Para utilizar o aplicativo, basta clonar ou baixar o repositório e seguir as in
 
 ### Utilizando APK
 
-Voçê pode executar o app em seu celular android acessando o link pelo qrcode disponível abaixo:
+Voçê pode executar o app em seu celular android acessando o link pelo qrcode disponível abaixo(É preciso ter o aplicativo Expo Go instalado):
 
 <img src="assets/qrcode.png" alt="QRCODE" width="200" height="200">
 
