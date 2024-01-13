@@ -4,6 +4,7 @@ import { Proposal } from "@/features/proposals";
 import { LinkButton } from "@/presentation/components";
 import { useRemove } from "@/features/proposals";
 import * as S from "./styles";
+import { useToastAction } from "@/presentation/components/Toast/hook/useToast";
 
 interface Props {
   visible: boolean;
@@ -18,8 +19,13 @@ export function ModalProposal({
   proposal,
   onRemoveSuccess,
 }: Props) {
+  const { showToast } = useToastAction();
   const { removeProposal } = useRemove({
     onSucess: () => {
+      showToast({
+        message: "Proposta deletada com sucesso!",
+        type: "success",
+      });
       onRemoveSuccess();
     },
   });

@@ -1,10 +1,14 @@
 {
   "expo": {
-    "name": "unymosapp",
-    "slug": "unymosapp",
+    "name": "Unymos",
+    "slug": "Unymos",
+    "icon": "./assets/icon.png",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"],
+    "extra": {
+      "eas": {
+        "projectId": "c68d16fb-a110-4120-8c09-0cd035b34573"
+      }
+    }
   }
 }

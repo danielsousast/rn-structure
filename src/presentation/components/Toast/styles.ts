@@ -9,7 +9,7 @@ const MAX_WIDTH = Dimensions.get("screen").width * 0.9;
 const modifiers = {
   success: {
     backgroundColor: "#e6fffa",
-    borderColor: "#a1e9c5",
+    borderColor: "#7ED29E",
   },
   error: {
     backgroundColor: "#fddede",
