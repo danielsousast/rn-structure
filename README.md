@@ -35,7 +35,7 @@
 
 ## Sobre o Projeto
 
-<img src=".github/screens.png" alt="Logo"  >
+<img src="assets/screens.png" alt="Logo"  >
 
 O aplicativo foi desenvolvido em React Native/Expo que permite o cadastro de propostas de vendas. Este projeto oferece uma plataforma interativa e acessível, permitindo aos usuários cadastrarem na memoria do celular os dados de cada proposta. Também permite a consulta dos útimos cadastros e geração de relatórios de cadastros por cidade.
 
@@ -66,7 +66,7 @@ Para utilizar o aplicativo, basta clonar ou baixar o repositório e seguir as in
 
 ### Utilizando APK
 
-Voçê pode executar o app em seu celular android acessando o link pelo qrcode disponível abaixo(É preciso ter o aplicativo Expo Go instalado):
+Voçê pode executar o app em seu celular android acessando o link pelo qrcode disponível abaixo(É preciso ter o aplicativo Expo Go instalado). Você será redirecionado para a página de build do app onde podera fazer o download do apk clicando nos 3 pontos que aparece abaixo do botNao install e depois clicar em "download build":
 
 <img src="assets/qrcode.png" alt="QRCODE" width="200" height="200">
 
