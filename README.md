@@ -82,7 +82,7 @@ Seguem as instruções de como executar o app:
 
 1. Clone o repositório
    ```sh
-   git clone https://github.com/danielsousast/unymos
+   git clone https://github.com/danielsousast/rn-structure
    ```
 2. Instalar as dependências Yarn/NPM
 
