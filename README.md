@@ -4,7 +4,7 @@
 <div align="center">
     <img src="assets/icon.png" alt="Logo" width="80" height="80">
 
-  <h3 align="center">Unymos App</h3>
+  <h3 align="center">Example App</h3>
 
   <p align="center">
    Aplicativo React Native que permite realizar cadastro de proposta de venda e geração de raltórios de cadastro por cidades.
